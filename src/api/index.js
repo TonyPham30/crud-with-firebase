@@ -1,0 +1,1 @@
+export const apiBase = "https://us-central1-fir-training-c0b22.cloudfunctions.net/app"
