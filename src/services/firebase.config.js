@@ -1,7 +1,7 @@
 import firebase from "firebase/compat/app";
 import "firebase/compat/auth";
 // init app
-firebase.initializeApp({
+export const initFirebase = firebase.initializeApp({
   apiKey: process.env.REACT_APP_API_KEY,
   authDomain: process.env.REACT_APP_AUTH_DOMAIN,
   projectId: process.env.REACT_APP_PROJECT_ID,
@@ -17,7 +17,6 @@ export const signinWithGoogle = () => {
   auth
     .signInWithPopup(googleProvider)
     .then((res) => {
-      console.log(res.user);
       const accessToken = res.user.multiFactor.user.accessToken;
       localStorage.setItem("access_token", accessToken);
     })
@@ -25,3 +24,11 @@ export const signinWithGoogle = () => {
       console.log(err);
     });
 };
+
+export const signOutWithGoogle = () => {
+  auth.signOut().then((res) => {
+    localStorage.removeItem("access_token");
+  }).catch((error) => {
+    console.log(error.message)
+  })
+}
