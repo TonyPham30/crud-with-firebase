@@ -11,16 +11,15 @@ function App() {
   useEffect(() => {
     if(accessToken) {
       navigate('/')
-    }else {
-      navigate('/login')
+    } else {
+      navigate("/login")
     }
-  }, [accessToken])
+  }, [])
   return (
     <div className="App">
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route exact path="/login" element={<Login />} />
-        <Route path="/createBlog" element={<CreateBlog/>} />
+        <Route path="/login" element={<Login />} />
       </Routes>
     </div>
   );

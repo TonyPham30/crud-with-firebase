@@ -14,7 +14,7 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import ShareIcon from '@mui/icons-material/Share';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
-
+import moment from "moment"
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
   return <IconButton {...other} />;
@@ -27,7 +27,6 @@ const ExpandMore = styled((props) => {
 }));
 
 export default function ListBlog(blog) {
-  console.log(blog)
   const [expanded, setExpanded] = React.useState(false);
   const handleExpandClick = () => {
     setExpanded(!expanded);
@@ -46,12 +45,12 @@ export default function ListBlog(blog) {
                 <MoreVertIcon />
               </IconButton>
             }
-            title="Shrimp and Chorizo Paella"
-            subheader="September 14, 2016"
+            title={blog.blog.userName ? blog.blog.userName: null}
+            subheader={moment(blog.blog.dateTime).format('L')}
           />
           <CardContent>
             <Typography variant="body2" color="text.secondary">
-              {blog.blog.title}
+              {blog.blog.title ? blog.blog.title : null}
             </Typography>
           </CardContent>
           <CardActions disableSpacing>
