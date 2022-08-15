@@ -19,6 +19,7 @@ export const signinWithGoogle = () => {
     .then((res) => {
       const accessToken = res.user.multiFactor.user.accessToken;
       localStorage.setItem("access_token", accessToken);
+      window.location.reload()
     })
     .catch((err) => {
       console.log(err);
@@ -28,6 +29,7 @@ export const signinWithGoogle = () => {
 export const signOutWithGoogle = () => {
   auth.signOut().then((res) => {
     localStorage.removeItem("access_token");
+    window.location.reload()
   }).catch((error) => {
     console.log(error.message)
   })
